@@ -1,0 +1,21 @@
+
+
+<mat-toolbar *ngIf="!login">
+
+  <span>Segser Seguridad</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button >
+    <mat-icon>filter_vintage</mat-icon>
+    Supervisor
+  </button>
+
+  <button mat-icon-button [routerLink]="['/login']" >
+<mat-icon>supervisor_account</mat-icon>
+    Login
+  </button>
+</mat-toolbar>
+
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
