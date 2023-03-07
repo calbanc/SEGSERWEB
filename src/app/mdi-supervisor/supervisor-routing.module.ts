@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
+import { GenerarondaComponent } from './generaronda/generaronda.component';
 import { MdiSupervisorComponent } from './mdi-supervisor.component';
 import { PuntoscontrolComponent } from './puntoscontrol/puntoscontrol.component';
 import { ReportesComponent } from './reportes/reportes.component';
@@ -17,6 +18,7 @@ const routes:Routes=[
       { path:'zonas',component:ZonasComponent},
       { path:'puntos',component:PuntoscontrolComponent},
       { path:'reportes',component:ReportesComponent},
+      { path:'genera',component:GenerarondaComponent},
       { path:'**',component:MdiSupervisorComponent}
     ]
   },

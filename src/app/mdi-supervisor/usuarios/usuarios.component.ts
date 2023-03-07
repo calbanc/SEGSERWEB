@@ -66,9 +66,7 @@ export class UsuariosComponent implements OnInit {
         response=>{
           if(response.code==200){
             this.rol=response.data;
-
           }
-
         },error=>{
           console.log(error);
         }
@@ -91,6 +89,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   list(){
+    this.isloading=true;
     this.user.IDCOMPANYUSER=this.userService.getcompany();
     this.user.IDROLE=this.formulario.value.IDROLE;
 

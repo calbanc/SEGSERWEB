@@ -9,6 +9,7 @@ import { ZonasComponent } from './zonas/zonas.component';
 import { PuntoscontrolComponent } from './puntoscontrol/puntoscontrol.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GenerarondaComponent } from './generaronda/generaronda.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ZonasComponent,
     PuntoscontrolComponent,
     ReportesComponent,
-    ClientesComponent
+    ClientesComponent,
+    GenerarondaComponent
 
   ],
   imports: [

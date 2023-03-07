@@ -11,7 +11,9 @@ export class Guards
     public LONG:number,
     public OBSERVATION:string,
     public ISOK:string,
-    public IDIMAGE:string
+    public IDIMAGE:string,
+    public IDCOMPANY:string,
+    public IDCLIENT:string
 
   ){
 
