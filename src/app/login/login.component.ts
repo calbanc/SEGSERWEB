@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private _router:Router,
     private _route:ActivatedRoute
   ) {
-    this.usuario=new User('','','','','','','','','');
+    this.usuario=new User('','','','','','','','','','');
     this.formulario=this.fb.group({
       username:['',Validators.required],
       password:['',Validators.required]
@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit {
     this.usuario.PASSWORD=this.formulario.value.password;
 
 
-    this.userservice.login(this.usuario.USERNAME,this.usuario.PASSWORD).subscribe(
+    this.userservice.login(this.usuario).subscribe(
       response=>{
         let respuesta=response.token;
-        if(respuesta.status=='ok'){
-          this.token=respuesta.token
+        if(response.status=='ok'){
+          this.token=response.token
           localStorage.setItem('TOKEN',this.token);
-          this.userservice.getuser(this.usuario.USERNAME,this.token).subscribe(
+          this.userservice.getuser(this.usuario,this.token).subscribe(
             response=>{
               this.loading=false;
               let data=response.data;

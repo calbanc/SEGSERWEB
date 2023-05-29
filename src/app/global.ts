@@ -1,5 +1,5 @@
 export var global=
 {
-  url:"http://app.verfrut.pe/api/SEGSER/public/api/"
+  url:"https://api.seguridadsegser.com/api/"
   
 }

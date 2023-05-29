@@ -22,7 +22,7 @@ export class GenerarondaComponent implements OnInit {
     private clientesService:ClientesService,
     private puntoscontrolService:PuntoscontrolService
   ) {
-    this.usuarios=new User('','','','','','','','','');
+    this.usuarios=new User('','','','','','','','','','');
   }
 
   ngOnInit(): void {

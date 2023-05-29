@@ -7,7 +7,7 @@ export class Clients
     public COUNTRY:string,
     public DATEINIT:string,
     public IDCOMPANY:string,
-
+    public EMAIL:string
 
   ){
 

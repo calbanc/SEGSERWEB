@@ -9,7 +9,8 @@ export class User
     public NAME:string,
     public PRIMARYNAME:string,
     public LASTNAME:string,
-    public IDROLE:string
+    public IDROLE:string,
+    public IDCLIENT:string
   ){
 
   }

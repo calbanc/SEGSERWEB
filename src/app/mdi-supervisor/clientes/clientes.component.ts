@@ -28,12 +28,13 @@ export class ClientesComponent implements OnInit {
     private dateAdapter: DateAdapter<Date>
   ) {
     this.dateAdapter.setLocale('en-GB');
-    this.cliente=new Clients('','','','','','');
+    this.cliente=new Clients('','','','','','','');
     this.frmcrearcliente=this.fb.group({
         NAME:['',Validators.required],
         ADDRES:['',Validators.required],
         COUNTRY:['',Validators.required],
-        DATEINIT:['',Validators.required]
+        DATEINIT:['',Validators.required],
+        EMAIL:['',Validators.required]
     });
   }
 
@@ -43,6 +44,7 @@ export class ClientesComponent implements OnInit {
     this.cliente.COUNTRY=this.frmcrearcliente.value.COUNTRY;
     this.cliente.DATEINIT=this.frmcrearcliente.value.DATEINIT;
     this.cliente.IDCOMPANY=this.company||'';
+    this.cliente.EMAIL=this.frmcrearcliente.value.EMAIL;
     this.clienteService.register(this.token||'',this.cliente).subscribe(
       response=>{
         if(response==200){

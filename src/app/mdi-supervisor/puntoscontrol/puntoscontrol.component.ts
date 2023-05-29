@@ -35,7 +35,7 @@ export class PuntoscontrolComponent implements OnInit {
     public fb:FormBuilder
   ) {
     this.punto=new Point('',this.idcompany||'','','','','','','');
-    this.clientes=new Clients('','','','','','');
+    this.clientes=new Clients('','','','','','','');
     this.frmcrearpunto=this.fb.group({
       IDCLIENTE:['',Validators.required],
       IDZONA:['',Validators.required],

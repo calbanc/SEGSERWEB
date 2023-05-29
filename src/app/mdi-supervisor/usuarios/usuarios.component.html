@@ -113,6 +113,14 @@
           </mat-select>
           <mat-hint>Seleccione Rol</mat-hint>
         </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="IDCLIENT" >
+            <mat-option ></mat-option>
+            <mat-option *ngFor="let cli of cliente" value="{{cli.ID}}">{{cli.ID}}-{{cli.NAME}}</mat-option>
+          </mat-select>
+          <mat-hint>Seleccione Cliente</mat-hint>
+        </mat-form-field>
           <br>
           <button type="submit" mat-raised-button color="primary" class="ancho boton" [disabled]="frmcreauser.invalid">Ingresar</button>
       </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { global } from '../global';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,17 +17,23 @@ export class UserService {
     this.url=global.url
    }
 
-   login(username: string,password: string):Observable<any>{
+   login(user: any):Observable<any>{
+    
+  /* 
     let params=new HttpParams();
     params=params.append('USERNAME',username)
-    params=params.append('PASSWORD',password)
+    params=params.append('PASSWORD',password) */
+
+    let json=JSON.stringify(user);
+    let params="json="+json;
 
     let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
     return this._http.post(this.url+'login',params,{headers:headers});
    }
-   getuser(username:string,token:string):Observable<any>{
-    let params=new HttpParams();
-    params=params.append('USERNAME',username)
+   getuser(user:any,token:string):Observable<any>{
+    
+    let json=JSON.stringify(user);
+    let params="json="+json;
     let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
                                   .set('Auth',token);
     return this._http.post(this.url+'user/getuser',params,{headers:headers});

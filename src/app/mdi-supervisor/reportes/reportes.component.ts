@@ -36,7 +36,7 @@ export class ReportesComponent implements OnInit {
   ) {
     this.guards=new Guards(0,0,0,'',0,0,0,0,'','','','','');
     this.token=this.userService.gettoken();
-    this.client=new Clients('','','','','','');
+    this.client=new Clients('','','','','','','');
     this.frmbuscarreporte=this.fb.group({
       IDCLIENT:['',Validators.required]
   });

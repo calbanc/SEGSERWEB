@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ClientesService } from 'src/app/services/clientes.service';
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -13,6 +14,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
 })
 export class UsuariosComponent implements OnInit {
   public role:Role;
+  public cliente:any;
   public idcompany:number=0;
   public token=this.userService.gettoken();
   public rol:any;
@@ -26,12 +28,13 @@ export class UsuariosComponent implements OnInit {
   constructor(
     public roleService:RoleService,
     public userService:UserService,
+    public clienteService:ClientesService,
     private fb:FormBuilder,
     public dialog:MatDialog
   ) {
     this.ELEMENT_DATA
     this.role=new Role('','','');
-    this.user=new User('','','','','','','','','TODOS');
+    this.user=new User('','','','','','','','','TODOS','');
     this.token=this.userService.gettoken();
     this.formulario=this.fb.group({
       IDROLE:['',Validators.required]
@@ -44,7 +47,10 @@ export class UsuariosComponent implements OnInit {
       NAME:['',Validators.required],
       APELLIDOPATERNO:['',Validators.required],
       APELLIDOMATERNO:['',Validators.required],
-      IDROLE:['',Validators.required]
+      IDROLE:['',Validators.required],
+      IDCLIENT:['','']  
+     
+     
     });
   }
 
@@ -52,14 +58,33 @@ export class UsuariosComponent implements OnInit {
 
     this.role.IDCOMPANY=this.userService.getcompany();
     this.getrolebycompany();
+    
     this.user.IDCOMPANYUSER=this.userService.getcompany();
     this.user.IDROLE="TODOS";
 
-    this.listall();
+    this.listall(); 
+    this.getallclientes();
 
 
 
   }
+
+  getallclientes(){
+
+    this.clienteService.getall(this.token||'').subscribe(
+      response=>{
+        if(response.code==200){
+
+          this.cliente=response.data;
+          console.log(this.cliente);
+        }
+      },error=>{
+        console.log(error);
+      }
+    )
+  }
+  
+  
 
   getrolebycompany(){
     this.roleService.getrolebycompany(this.token||'',this.role).subscribe(
@@ -132,7 +157,9 @@ export class UsuariosComponent implements OnInit {
     this.user.PRIMARYNAME=this.frmcreauser.value.APELLIDOPATERNO;
     this.user.LASTNAME=this.frmcreauser.value.APELLIDOMATERNO;
     this.user.IDROLE=this.frmcreauser.value.IDROLE;
+    this.user.IDCLIENT=this.frmcreauser.value.IDCLIENT;
     this.user.IDCOMPANYUSER=this.userService.getcompany();
+    console.log(this.user);
     this.userService.register(this.token||'',this.user).subscribe(
       response=>{
 
